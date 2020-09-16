@@ -8,11 +8,10 @@
 # ====#====#====#====
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QWidget
-from PyQt5.QtCore import QObject
-from PY_exe.untitled import Ui_mainWindow
-from PY_exe._util import *
+from UI.untitled import Ui_mainWindow
+from common._util import *
 
-class mainwindow(Ui_mainWindow,QWidget):
+class mainwindow(Ui_mainWindow,QMainWindow):
     def __init__(self,*args, **kwargs):
         super(mainwindow,self).__init__(*args, **kwargs)
         self.setupUi(self)
@@ -22,7 +21,7 @@ class mainwindow(Ui_mainWindow,QWidget):
         :return:
         """
         self.setWindowTitle('获取登录信息')
-        self.send.setProperty('class',)
+        self.send.setProperty('class','')
         self.pushButton_2.setProperty('class','')
 
 
