@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class send_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(435, 374)
@@ -58,13 +58,9 @@ class Ui_MainWindow(object):
         self.export_url = QtWidgets.QTextBrowser(self.centralwidget)
         self.export_url.setGeometry(QtCore.QRect(100, 230, 311, 41))
         self.export_url.setObjectName("export_url")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(120, 300, 171, 31))
         font = QtGui.QFont()
         font.setFamily("楷体")
         font.setPointSize(14)
-        self.pushButton.setFont(font)
-        self.pushButton.setObjectName("pushButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -79,4 +75,3 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "token"))
         self.label_4.setText(_translate("MainWindow", "PCtoken"))
         self.label_5.setText(_translate("MainWindow", "URL"))
-        self.pushButton.setText(_translate("MainWindow", "返回首页"))

@@ -7,9 +7,6 @@
 # Function:CommontUtil工具模块编写
 # ====#====#====#====
 import hashlib
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QMessageBox, QWidget
 
 
 def get_md5(data):
@@ -35,35 +32,19 @@ def get_phone(data):
             return None
     except:
         return None
-def args_map(name,data):
+def args_map(user,data):
     """
     前端数据转换josn
     :param name:
     :param data:
     :return:
     """
+    name = get_phone(user)
     pwd = get_md5(data)
-    return {
-        "name": name,
-        "pwd": pwd
-    }
-def hint_dialog(widget: QWidget, title: str, content: str) -> None:
-    """
-    display a dialog with choose button
-    :param widget: the dialog rely on the father window
-    :param title: the dialog title word
-    :param content: the dialog content is used to hint user's
-    :return: None
-    """
-    tip_box = QMessageBox(QMessageBox.Information, title, content)
-    submit = tip_box.addButton(widget.tr('确定'), QMessageBox.YesRole)
-    tip_box.setModal(True)
-    tip_box.exec_()
-    if tip_box.clickedButton() == submit:
-        pass
-    else:
-        return
-def accept_box(widget, title, msg):
-    return QMessageBox.warning(widget, title, msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-def msg_box(widget, title, msg):
-    QMessageBox.warning(widget, title, msg, QMessageBox.Yes)
+    try:
+        return {
+            "name": name,
+            "pwd": pwd
+        }
+    except:
+        return None
