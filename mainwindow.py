@@ -12,7 +12,7 @@ from datetime import time
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget
 from UI.untitled import Ui_mainWindow
 from UI.resul import send_MainWindow
-from UI.token import log_MainWindow
+# from UI.token import log_MainWindow
 # from common._util import *
 from common.send_data import Send_LOG
 from common.login_client import Http_Client
@@ -95,7 +95,7 @@ class mainwindow(Ui_mainWindow,QMainWindow):
         }
         with open('log.txt', "a+") as file:  # 只需要将之前的”w"改为“a"即可，代表追加内容
                 file.write(str(write_txt) + "\n")
-        self._report(pc_token,url_token,url)
+        # self._report(pc_token,url_token,url)
 
 
 

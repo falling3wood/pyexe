@@ -21,7 +21,7 @@ class Send_LOG(send_MainWindow, QMainWindow):
         self.export_pc.setText(pc)
         self.export_token.setText(token)
         self.export_url.setText(url)
-        QMessageBox.warning(self,'提示',)
+        QMessageBox.warning(self,'提示','加载中。。。。')
     # def back_button(self):
     #     self.pushButton.setCheckable(True)
         # if self.pushButton.isChecked():
