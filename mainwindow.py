@@ -23,8 +23,8 @@ class mainwindow(Ui_mainWindow,QMainWindow):
         self.setupUi(self)
         self.login_init()
         self.center()
-        self.send_TAG = None
-        self.log_TAG = None
+        # self.send_TAG = None
+        # self.log_TAG = None
     def init_slot(self):
         """信号槽初始化"""
         self.send.clicked.connect(lambda: self.btn_slot('send'))
