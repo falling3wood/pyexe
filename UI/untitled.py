@@ -15,6 +15,9 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
         mainWindow.resize(452, 383)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../img/home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        mainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -54,21 +57,21 @@ class Ui_mainWindow(object):
         font.setPointSize(14)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
-        self.input_host = QtWidgets.QLineEdit(self.centralwidget)
+        self.input_host = QtWidgets.QTextEdit(self.centralwidget)
         self.input_host.setGeometry(QtCore.QRect(90, 100, 341, 31))
         font = QtGui.QFont()
         font.setFamily("Agency FB")
         font.setPointSize(12)
         self.input_host.setFont(font)
         self.input_host.setObjectName("input_host")
-        self.input_phone = QtWidgets.QLineEdit(self.centralwidget)
+        self.input_phone = QtWidgets.QTextEdit(self.centralwidget)
         self.input_phone.setGeometry(QtCore.QRect(90, 160, 341, 31))
         font = QtGui.QFont()
         font.setFamily("Agency FB")
         font.setPointSize(12)
         self.input_phone.setFont(font)
         self.input_phone.setObjectName("input_phone")
-        self.input_pwd = QtWidgets.QLineEdit(self.centralwidget)
+        self.input_pwd = QtWidgets.QTextEdit(self.centralwidget)
         self.input_pwd.setGeometry(QtCore.QRect(90, 230, 341, 31))
         font = QtGui.QFont()
         font.setFamily("Agency FB")
@@ -103,8 +106,10 @@ class Ui_mainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(mainWindow)
         self.statusbar.setObjectName("statusbar")
         mainWindow.setStatusBar(self.statusbar)
+
         self.retranslateUi(mainWindow)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
+
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "MainWindow"))
@@ -112,8 +117,20 @@ class Ui_mainWindow(object):
         self.label_3.setText(_translate("mainWindow", "  host"))
         self.label_6.setText(_translate("mainWindow", "用户名"))
         self.label_7.setText(_translate("mainWindow", "密 码"))
-        self.input_host.setPlaceholderText('URL')
-        self.input_phone.setPlaceholderText('手机号')
-        self.input_pwd.setPlaceholderText('密码')
+        self.input_host.setHtml(_translate("mainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Agency FB\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'SimSun\';\">URL</span></p></body></html>"))
+        self.input_phone.setHtml(_translate("mainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Agency FB\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Username</p></body></html>"))
+        self.input_pwd.setHtml(_translate("mainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Agency FB\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Password</p></body></html>"))
         self.send.setText(_translate("mainWindow", "发送"))
         self.pushButton_2.setText(_translate("mainWindow", "历史记录"))
