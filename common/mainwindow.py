@@ -11,8 +11,11 @@ import time
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtGui import *
+from PyQt5.uic.properties import QtGui
+
 from UI.GUI_style import Ui_mainWindow
-from common._util import toast_logo, log_txt, args_map
+from common._util import *
 from common.login_client import Http_Client
 from common.read_log import MY_window3
 from common.send_data import MY_window2
@@ -38,23 +41,21 @@ class MY_window1(Ui_mainWindow,QMainWindow):
         :return: 出错返回,不执行后续操作逻辑
         """
         # 歷史記錄
+        # print(tag)
         if tag == 'log':
             self.log_main = MY_window3()
             self.log_main.show()
-            self.shut()
         # 發送請求
-        mold = self.get_text()
+        # print(mold)
         if tag == 'send':
+            mold = self.get_text()
             if mold == None:
                 self.msg_box('提示','输入参数不正确。。。')
-                return
             elif mold == 'req_out':
                 self.msg_box('提示','請求失敗。。。')
-                return
             else:
                 self.data_main = MY_window2()
                 self.data_main.show()
-                self.shut()
     def get_text(self):
         get_host = self.input_host.text()
         get_phone = self.input_phone.text()
@@ -80,9 +81,6 @@ class MY_window1(Ui_mainWindow,QMainWindow):
         """
         if QKeyEvent.key() == Qt.Key_Enter or QKeyEvent.key() == Qt.Key_Return:
             self.send.click()
-    def msg_box(self,title, msg):
-        """提示框 """
-        QMessageBox.warning(self,title, msg,QMessageBox.Yes)
     def _url_report(self,get_host, data):
         """
         發送請求
@@ -111,6 +109,10 @@ class MY_window1(Ui_mainWindow,QMainWindow):
         self.show()
     def shut(self):   #被调用的类需要再编写一个close函数
         self.close()
+
+    def msg_box(self,title, msg):
+        """提示框 """
+        QMessageBox.warning(self,title, msg, QMessageBox.Yes)
 if __name__ == "__main__":
         app = QApplication(sys.argv)
         mainWindow = MY_window1()

@@ -10,26 +10,37 @@ import os
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget
 from UI.GUI_style import send_MainWindow
-from common._util import log_txt
+from common._util import log_txt, msg_box
 import json
 
 
 class MY_window2(send_MainWindow,QMainWindow):
     def __init__(self):
-        super(MY_window2, self).__init__()
+        super(send_MainWindow, self).__init__()
         self.setupUi(self)
         self.show_data()
+        self.shut_click()
     def show_data(self):
-        a = self._read_txt()
-        data = a.replace("'", '"')
-        data_josn = json.loads(data)
-        self.export_url.setText(data_josn['URL'])
-        self.export_pc.setText(data_josn['PCtoken'])
-        self.export_token.setText(data_josn['token'])
+        try:
+            a = self._read_txt()
+            if a == None:
+                msg_box('提示','输入参数不正确。。。')
+                self.shut()
+            else:
+                data = a.replace("'", '"')
+                data_josn = json.loads(data)
+                url = data_josn['URL']
+                pctoken = data_josn['PCtoken']
+                token = data_josn['token']
+                self.export_url.setText('URL:%s' % url)
+                self.export_pc.setText('PCtoken:%s' % pctoken)
+                self.export_token.setText('Token:%s' % token)
+        except:
+            pass
     def open(self):  # 被调用的类需要再编写一个open函数
         self.show()
-    def shut(self):   #被调用的类需要再编写一个close函数
-        self.close()
+    def shut_click(self):   #被调用的类需要再编写一个close函数
+        self.pushButton.clicked.connect(self.close)
     def _read_txt(self):
         # with open(log_txt, 'rb') as f:  # 打开文件
         #     # 在文本文件中，没有使用b模式选项打开的文件，只允许从文件头开始,只能seek(offset,0)
@@ -51,7 +62,6 @@ class MY_window2(send_MainWindow,QMainWindow):
         #     # print('文件' + log_txt + '第一行为：' + first_line.decode())
         #     # print('文件' + log_txt + '最后一行为：' + last_line.decode())
         #     return last_line.decode()
-
         filesize = os.path.getsize(log_txt)
         blocksize = 1024
         dat_file = open(log_txt, 'rb')
@@ -68,10 +78,10 @@ class MY_window2(send_MainWindow,QMainWindow):
         # print "last line : ", last_line
         dat_file.close()
         return last_line.decode()
-
-
-if __name__ == '__main__':
+def show_send():
     app = QApplication(sys.argv)
     mainWindow = MY_window2()
     mainWindow.show()
     sys.exit(app.exec_())
+if __name__ == '__main__':
+    show_send()
