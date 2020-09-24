@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['C:\\Users\\wangben\\Desktop\\PY_exe\\run.py'],
-             pathex=['C:\\Users\\wangben\\Desktop\\token'],
+a = Analysis(['run.py'],
+             pathex=['C:\\Users\\wangben\\Desktop\\PY_exe'],
              binaries=[],
              datas=[],
              hiddenimports=[],
